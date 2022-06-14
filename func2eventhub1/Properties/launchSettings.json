@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "func2eventhub1": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7292",
+      "launchBrowser": false
+    }
+  }
+}
