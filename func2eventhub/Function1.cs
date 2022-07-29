@@ -20,7 +20,7 @@ namespace func2eventhub1
     public static class Function1
     {
         // connection string to the Event Hubs namespace
-        private const string connectionString = "your event hub connection string";
+        private const string connectionString = "Endpoint=sb://adx2func2eventhub1.servicebus.windows.net/;SharedAccessKeyName=demo1;SharedAccessKey=974sWFQNoePWnKtnss8NyuE2A6d9J3WPlrGtj9xW4jM=;EntityPath=demo1";
 
         // name of the event hub
         private const string eventHubName = "demo1";
@@ -30,7 +30,7 @@ namespace func2eventhub1
         // of the application, which is best practice when events are being published or read regularly.
         static EventHubProducerClient producerClient;
 
-        const string Cluster = "https://yourcluster.kusto.windows.net";
+        const string Cluster = "https://adxclustercsa.eastasia.kusto.windows.net";
         const string Database = "mydb1";
 
 
@@ -55,26 +55,6 @@ namespace func2eventhub1
 
             // Create a batch of events 
             using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
-
-            //for (int i = 1; i <= numOfEvents; i++)
-            //{
-            //    if (!eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes($"Event {i}"))))
-            //    {
-            //        // if it is too large for the batch
-            //        throw new Exception($"Event {i} is too large for the batch and cannot be sent.");
-            //    }
-            //}
-
-            //try
-            //{
-            //    // Use the producer client to send the batch of events to the event hub
-            //    await producerClient.SendAsync(eventBatch);
-            //    Console.WriteLine($"A batch of {numOfEvents} events has been published.");
-            //}
-            //finally
-            //{
-            //    await producerClient.DisposeAsync();
-            //}
 
             // The query provider is the main interface to use when querying Kusto.
             // It is recommended that the provider be created once for a specific target database,
@@ -107,7 +87,7 @@ namespace func2eventhub1
                         string UserId = reader.GetString(5);
                         string ClientIP = reader.GetString(6);
 
-                        string adxData = $"{CreationTime} {type} {Operation} {RecordType} {Workload} {UserId} {ClientIP}";
+                        string adxData = $"{CreationTime},{type},{Operation},{RecordType},{Workload},{UserId},{ClientIP}";
 
                         log.LogInformation(adxData);
 
