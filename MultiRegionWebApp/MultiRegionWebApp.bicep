@@ -29,7 +29,7 @@ param frontDoorSkuName string = 'Standard_AzureFrontDoor'
 var appServicePlanName = 'AppServicePlan'
 var secondaryAppServicePlanName = 'SecondaryAppServicePlan'
 
-var frontDoorProfileName = 'MyFrontDoor'
+var frontDoorProfileName = 'JackyFrontDoor'
 var frontDoorOriginGroupName = 'MyOriginGroup'
 var frontDoorOriginName = 'MyAppServiceOrigin'
 var secondaryFrontDoorOriginName = 'MySecondaryAppServiceOrigin'
