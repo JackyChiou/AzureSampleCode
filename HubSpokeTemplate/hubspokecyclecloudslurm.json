@@ -1497,8 +1497,7 @@
               "privateEndpointNetworkPolicies": "Disabled",
               "privateLinkServiceNetworkPolicies": "Disabled"
               }
-            }
-          }          
+          }       
         ]
       },
       "dependsOn": [
