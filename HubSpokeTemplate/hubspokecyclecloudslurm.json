@@ -1087,11 +1087,11 @@
             "properties": {
               "protocol": "Tcp",
               "sourcePortRange": "*",
-              "sourceAddressPrefix": "[reference(resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-slurm'), '2022-01-01').addressPrefix]",
+              "sourceAddressPrefix": "10.200.3.0/24",
               "destinationPortRanges": [
                 "5672"
               ],
-              "destinationAddressPrefix": "[reference(resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-cyclecloud'), '2022-01-01').addressPrefix]",
+              "destinationAddressPrefix": "10.200.2.0/24",
               "access": "Allow",
               "priority": 200,
               "direction": "Inbound"
@@ -1102,11 +1102,11 @@
             "properties": {
               "protocol": "Any",
               "sourcePortRange": "*",
-              "sourceAddressPrefix": "[reference(resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-slurm'), '2022-01-01').addressPrefix]",
+              "sourceAddressPrefix": "10.200.3.0/24",
               "destinationPortRanges": [
                 "9443"
               ],
-              "destinationAddressPrefix": "[reference(resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-cyclecloud'), '2022-01-01').addressPrefix]",
+              "destinationAddressPrefix": "10.200.2.0/24",
               "access": "Allow",
               "priority": 201,
               "direction": "Inbound"
@@ -1117,11 +1117,11 @@
             "properties": {
               "protocol": "Tcp",
               "sourcePortRange": "*",
-              "sourceAddressPrefix": "[reference(resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-cyclecloud'), '2022-01-01').addressPrefix]",
+              "sourceAddressPrefix": "10.200.2.0/24",
               "destinationPortRanges": [
                 "22"
               ],
-              "destinationAddressPrefix": "[reference(resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-slurm'), '2022-01-01').addressPrefix]",
+              "destinationAddressPrefix": "10.200.3.0/24",
               "access": "Allow",
               "priority": 201,
               "direction": "Inbound"
