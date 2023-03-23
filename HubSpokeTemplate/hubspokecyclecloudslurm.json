@@ -1492,14 +1492,10 @@
           {
             "name": "snet-slurm-image",
             "properties": {
-              "addressPrefix": "10.200.1.64/28",
-              "networkSecurityGroup": {
-                "id": ""
+              "addressPrefix": "10.200.1.64/28"
               },
               "privateEndpointNetworkPolicies": "Disabled",
-              "privateLinkServiceNetworkPolicies": "Disabled",
-              "routeTable": {
-                "id": ""
+              "privateLinkServiceNetworkPolicies": "Disabled"
               }
             }
           }          
