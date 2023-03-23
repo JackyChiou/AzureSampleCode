@@ -1100,7 +1100,7 @@
           {
             "name": "https_9443",
             "properties": {
-              "protocol": "Any",
+              "protocol": "*",
               "sourcePortRange": "*",
               "sourceAddressPrefix": "10.200.3.0/24",
               "destinationPortRanges": [
