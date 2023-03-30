@@ -216,7 +216,6 @@
                                 "fqdnTags": [],
                                 "webCategories": [],
                                 "targetFqdns": [
-                                    "github.com",
                                     "objects.githubusercontent.com",
                                     "api.github.com",
                                     "codeload.github.com"
@@ -241,7 +240,6 @@
                                 "fqdnTags": [],
                                 "webCategories": [],
                                 "targetFqdns": [
-                                    "*.blob.storage.azure.net",
                                     "mpcprodsa.blob.core.windows.net"
                                 ],
                                 "targetUrls": [],
@@ -291,6 +289,28 @@
                                 "webCategories": [],
                                 "targetFqdns": [
                                     "agentserviceapi.guestconfiguration.azure.com"
+                                ],
+                                "targetUrls": [],
+                                "terminateTLS": false,
+                                "sourceAddresses": [
+                                    "10.200.3.0/24"
+                                ],
+                                "destinationAddresses": [],
+                                "sourceIpGroups": []
+                            },
+                            {
+                                "ruleType": "ApplicationRule",
+                                "name": "azcopyvnext.azureedge.net",
+                                "protocols": [
+                                    {
+                                        "protocolType": "Https",
+                                        "port": 443
+                                    }
+                                ],
+                                "fqdnTags": [],
+                                "webCategories": [],
+                                "targetFqdns": [
+                                    "azcopyvnext.azureedge.net"
                                 ],
                                 "targetUrls": [],
                                 "terminateTLS": false,
@@ -660,9 +680,7 @@
         "name": "Standard"
       },
       "zones": [
-        "1",
-        "2",
-        "3"
+        "1"
       ],
       "properties": {
         "publicIPAllocationMethod": "Static",
