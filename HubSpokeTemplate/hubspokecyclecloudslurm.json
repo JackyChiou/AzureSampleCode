@@ -168,9 +168,7 @@
                                 "targetUrls": [],
                                 "terminateTLS": false,
                                 "sourceAddresses": [
-                                    "10.200.0.0/24",
-                                    "10.200.2.0/24",
-                                    "10.200.3.0/24"
+                                    "10.200.0.0/24"
                                 ],
                                 "destinationAddresses": [],
                                 "sourceIpGroups": []
