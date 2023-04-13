@@ -665,7 +665,7 @@
         ],
         "sku": {
           "name": "AZFW_VNet",
-          "tier": "Basic"
+          "tier": "Standard"
         },
         "firewallPolicy": {
           "id": "[resourceId('Microsoft.Network/firewallPolicies', format('fw-policies-{0}', parameters('location')))]"
