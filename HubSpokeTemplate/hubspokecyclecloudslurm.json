@@ -562,7 +562,9 @@
         "name": "Standard"
       },
       "zones": [
-        "2"
+        "1",
+        "2",
+        "3"
       ],
       "properties": {
         "publicIPAllocationMethod": "Static",
@@ -641,7 +643,9 @@
       "name": "[format('fw-{0}', parameters('location'))]",
       "location": "[parameters('location')]",
       "zones": [
-        "2"
+        "1",
+        "2",
+        "3"
       ],
       "properties": {
         "copy": [
@@ -712,7 +716,9 @@
         "name": "Standard"
       },
       "zones": [
-        "2"
+        "1",
+        "2",
+        "3"
       ],
       "properties": {
         "publicIPAllocationMethod": "Static",
