@@ -608,7 +608,7 @@
       "location": "[parameters('location')]",
       "properties": {
         "sku": {
-          "tier": "Basic"
+          "tier": "Standard"
         },
         "threatIntelMode": "Deny",
         "insights": {
