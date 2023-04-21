@@ -1617,7 +1617,7 @@
   {
       "type": "Microsoft.Storage/storageAccounts/tableServices",
       "apiVersion": "2022-09-01",
-      "name": "[parameters('storageAccounts_sa4ccslurm_name')]",
+      "name": "[concat(parameters('storageAccounts_sa4ccslurm_name'), '/default')]",
       "dependsOn": [
           "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sa4ccslurm_name'))]"
       ],
