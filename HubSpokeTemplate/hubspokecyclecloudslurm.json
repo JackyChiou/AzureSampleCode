@@ -1547,7 +1547,7 @@
     {
       "type": "Microsoft.Storage/storageAccounts/blobServices",
       "apiVersion": "2022-09-01",
-      "name": "[concat(format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')), '/default')]",
+      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
       "dependsOn": [
           "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
       ],
@@ -1580,7 +1580,7 @@
   {
       "type": "Microsoft.Storage/storageAccounts/fileServices",
       "apiVersion": "2022-09-01",
-      "name": "[concat(format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')), '/default')]",
+      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
       "dependsOn": [
           "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
       ],
@@ -1604,7 +1604,7 @@
   {
       "type": "Microsoft.Storage/storageAccounts/queueServices",
       "apiVersion": "2022-09-01",
-      "name": "[concat(format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')), '/default')]",
+      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
       "dependsOn": [
           "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
       ],
@@ -1617,7 +1617,7 @@
   {
       "type": "Microsoft.Storage/storageAccounts/tableServices",
       "apiVersion": "2022-09-01",
-      "name": "[concat(format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')), '/default')]",
+      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
       "dependsOn": [
           "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
       ],
