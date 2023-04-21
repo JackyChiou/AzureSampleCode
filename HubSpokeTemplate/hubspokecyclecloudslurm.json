@@ -1547,9 +1547,9 @@
     {
       "type": "Microsoft.Storage/storageAccounts/blobServices",
       "apiVersion": "2022-09-01",
-      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
+      "name": "[concat(parameters('storageAccounts_sa4ccslurm_name'), '/default')]",
       "dependsOn": [
-          "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
+          "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sa4ccslurm_name'))]"
       ],
       "sku": {
           "name": "Standard_LRS",
@@ -1580,9 +1580,9 @@
   {
       "type": "Microsoft.Storage/storageAccounts/fileServices",
       "apiVersion": "2022-09-01",
-      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
+      "name": "[concat(parameters('storageAccounts_sa4ccslurm_name'), '/default')]",
       "dependsOn": [
-          "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
+          "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sa4ccslurm_name'))]"
       ],
       "sku": {
           "name": "Standard_LRS",
@@ -1604,9 +1604,9 @@
   {
       "type": "Microsoft.Storage/storageAccounts/queueServices",
       "apiVersion": "2022-09-01",
-      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
+      "name": "[concat(parameters('storageAccounts_sa4ccslurm_name'), '/default')]",
       "dependsOn": [
-          "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
+          "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sa4ccslurm_name'))]"
       ],
       "properties": {
           "cors": {
@@ -1617,9 +1617,9 @@
   {
       "type": "Microsoft.Storage/storageAccounts/tableServices",
       "apiVersion": "2022-09-01",
-      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
+      "name": "[parameters('storageAccounts_sa4ccslurm_name')]",
       "dependsOn": [
-          "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
+          "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sa4ccslurm_name'))]"
       ],
       "properties": {
           "cors": {
@@ -1630,7 +1630,7 @@
   {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2022-09-01",
-      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
+      "name": "[parameters('storageAccounts_sa4ccslurm_name')]",
       "location": "[parameters('location')]",
       "dependsOn": [
           "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-resources')]",
