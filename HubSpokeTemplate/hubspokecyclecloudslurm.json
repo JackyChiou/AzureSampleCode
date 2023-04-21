@@ -46,6 +46,11 @@
         "description": "Password for both the Linux and Windows VM. Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character. Must be at least 12 characters. Only needed when providing deployVirtualMachines=true."
       },
       "maxLength": 70
+    },
+    "storageAccounts_sa4ccslurm_name":{
+      "type": "string",
+      "defaultValue": "sa4ccslurm",
+      "maxLength": 20
     }
   },
   "variables": {
@@ -1537,6 +1542,152 @@
       ],
       "metadata": {
         "description": "A basic Windows virtual machine that will be attached to spoke two."
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')), '/default')]",
+      "dependsOn": [
+          "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
+      ],
+      "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+      },
+      "properties": {
+          "changeFeed": {
+              "enabled": false
+          },
+          "restorePolicy": {
+              "enabled": false
+          },
+          "containerDeleteRetentionPolicy": {
+              "enabled": true,
+              "days": 7
+          },
+          "cors": {
+              "corsRules": []
+          },
+          "deleteRetentionPolicy": {
+              "allowPermanentDelete": false,
+              "enabled": true,
+              "days": 7
+          },
+          "isVersioningEnabled": false
+      }
+  },
+  {
+      "type": "Microsoft.Storage/storageAccounts/fileServices",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')), '/default')]",
+      "dependsOn": [
+          "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
+      ],
+      "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+      },
+      "properties": {
+          "protocolSettings": {
+              "smb": {}
+          },
+          "cors": {
+              "corsRules": []
+          },
+          "shareDeleteRetentionPolicy": {
+              "enabled": true,
+              "days": 7
+          }
+      }
+  },
+  {
+      "type": "Microsoft.Storage/storageAccounts/queueServices",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')), '/default')]",
+      "dependsOn": [
+          "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
+      ],
+      "properties": {
+          "cors": {
+              "corsRules": []
+          }
+      }
+  },
+  {
+      "type": "Microsoft.Storage/storageAccounts/tableServices",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')), '/default')]",
+      "dependsOn": [
+          "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location')))]"
+      ],
+      "properties": {
+          "cors": {
+              "corsRules": []
+          }
+      }
+  },
+  {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2022-09-01",
+      "name": "[format('{0}{1}}', parameters('storageAccounts_sa4ccslurm_name'), parameters('location'))]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+          "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-resources')]",
+          "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-cyclecloud')]",
+          "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-slurm')]"
+      ],
+      "sku": {
+          "name": "Standard_LRS",
+          "tier": "Standard"
+      },
+      "kind": "StorageV2",
+      "properties": {
+          "dnsEndpointType": "Standard",
+          "defaultToOAuthAuthentication": false,
+          "publicNetworkAccess": "Enabled",
+          "allowCrossTenantReplication": true,
+          "minimumTlsVersion": "TLS1_2",
+          "allowBlobPublicAccess": false,
+          "allowSharedKeyAccess": true,
+          "networkAcls": {
+              "bypass": "AzureServices",
+              "virtualNetworkRules": [
+                  {
+                      "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-resources')]",
+                      "action": "Allow",
+                      "state": "Succeeded"
+                  },
+                  {
+                      "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-cyclecloud')]",
+                      "action": "Allow",
+                      "state": "Succeeded"
+                  },
+                  {
+                      "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-slurm')]",
+                      "action": "Allow",
+                      "state": "Succeeded"
+                  }
+              ],
+              "ipRules": [],
+              "defaultAction": "Deny"
+          },
+          "supportsHttpsTrafficOnly": true,
+          "encryption": {
+              "requireInfrastructureEncryption": false,
+              "services": {
+                  "file": {
+                      "keyType": "Account",
+                      "enabled": true
+                  },
+                  "blob": {
+                      "keyType": "Account",
+                      "enabled": true
+                  }
+              },
+              "keySource": "Microsoft.Storage"
+          },
+          "accessTier": "Hot"
       }
     }
   ]
