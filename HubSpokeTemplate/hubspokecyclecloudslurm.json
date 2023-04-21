@@ -1631,11 +1631,7 @@
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2022-09-01",
       "name": "[parameters('storageAccounts_sa4ccslurm_name')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-          "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-cyclecloud')]",
-          "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-slurm')]"
-      ],
+      "location": "[parameters('location')]",      
       "sku": {
           "name": "Standard_LRS",
           "tier": "Standard"
@@ -1648,24 +1644,7 @@
           "allowCrossTenantReplication": true,
           "minimumTlsVersion": "TLS1_2",
           "allowBlobPublicAccess": false,
-          "allowSharedKeyAccess": true,
-          "networkAcls": {
-              "bypass": "AzureServices",
-              "virtualNetworkRules": [                  
-                  {
-                      "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-cyclecloud')]",
-                      "action": "Allow",
-                      "state": "Succeeded"
-                  },
-                  {
-                      "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', format('vnet-{0}-spoke-two', parameters('location')), 'snet-slurm')]",
-                      "action": "Allow",
-                      "state": "Succeeded"
-                  }
-              ],
-              "ipRules": [],
-              "defaultAction": "Deny"
-          },
+          "allowSharedKeyAccess": true,          
           "supportsHttpsTrafficOnly": true,
           "encryption": {
               "requireInfrastructureEncryption": false,
