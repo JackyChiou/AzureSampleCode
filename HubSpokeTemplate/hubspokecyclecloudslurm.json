@@ -46,15 +46,6 @@
         "description": "Password for both the Linux and Windows VM. Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character. Must be at least 12 characters. Only needed when providing deployVirtualMachines=true."
       },
       "maxLength": 70
-    },
-    "storageaccountname": {
-      "type": "string",
-      "defaultValue": "sa4ccslurm",
-      "metadata": {
-        "description": "Storage Account Name."
-      },
-      "maxLength": 20,
-      "minLength": 4
     }
   },
   "variables": {
