@@ -1604,9 +1604,7 @@
                     "keySource": "Microsoft.Storage"
                 },
                 "accessTier": "Hot"
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', format('vnet-{0}-spoke-two', parameters('location')))]"
+            }
         },
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices",
